@@ -15,22 +15,7 @@ const Footer = ({ isDarkMode }) => {
         marginTop: "4rem",
       }}
     >
-      <Text style={{ color: textColor, fontSize: 14 }}>
-        Developed by{" "}
-        <a
-          href="https://www.narenderkeswani.com"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{
-            color: textColor,
-            textDecoration: "underline",
-            fontWeight: 500,
-          }}
-        >
-          Narender Keswani
-        </a>{" "}
-        • All rights reserved © {new Date().getFullYear()}
-      </Text>
+      
     </footer>
   );
 };
