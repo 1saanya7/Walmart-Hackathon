@@ -1,3 +1,5 @@
+// App.tsx (Updated to Include Real-Time Group Cart Sharing)
+
 import React, { useState } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
@@ -6,6 +8,7 @@ import MyStyleSection from './components/MyStyleSection';
 import GroupShoppingPanel from './components/GroupShoppingPanel';
 import AIChat from './components/AIChat';
 import CartSidebar from './components/CartSidebar';
+import CartPanel from './components/CartPanel'; // ✅ import group cart
 
 interface Product {
   id: number;
@@ -182,30 +185,37 @@ function App() {
         onGroupCartClick={() => setIsGroupPanelOpen(true)}
         onChatClick={() => setIsChatOpen(true)}
       />
-      
+
       <Hero
         onStartGroupShopping={() => setIsGroupPanelOpen(true)}
         onTryAI={() => setIsChatOpen(true)}
       />
-      
+
       <ProductGrid
         products={products}
         onAddToCart={handleAddToCart}
         onAddToGroupCart={handleAddToGroupCart}
       />
-      
+
       <MyStyleSection />
-      
+
       <GroupShoppingPanel
         isOpen={isGroupPanelOpen}
         onClose={() => setIsGroupPanelOpen(false)}
       />
-      
+
+      {/* Group Cart: Show only when Group Panel is open */}
+      {isGroupPanelOpen && (
+        <div className="max-w-5xl mx-auto px-4 mt-4">
+          <CartPanel groupId="default_group" />
+        </div>
+      )}
+
       <AIChat
         isOpen={isChatOpen}
         onClose={() => setIsChatOpen(false)}
       />
-      
+
       <CartSidebar
         isOpen={isCartOpen}
         onClose={() => setIsCartOpen(false)}
